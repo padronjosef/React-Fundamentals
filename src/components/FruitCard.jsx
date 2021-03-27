@@ -1,4 +1,5 @@
-import React from 'react'
+import React from "react";
+import "./style.css";
 
 // const FruidCard = (props) => (
 //   <div>
@@ -56,18 +57,14 @@ class FruitCard extends React.Component {
   reset = () => this.setState({ quantity: 0 });
 
   render() {
-    const hasItems = this.state.quantity > 0 
-    const styles = {
-      border: '1px solid black',
-      marginBottom: '1em',
-      borderRadius: '.5em',
-      padding: '1em',
-      background: hasItems ? 'linear-gradient(45deg, black, #4a02f7)' : 'white',
-      color: hasItems > 0 ? 'white' : 'black',
-      transition: 'all 400ms ease-out'
-    }
+    const hasItems = this.state.quantity > 0;
+    const activeClass = hasItems ? " card--active" : "";
+    const classes = "card" + activeClass;
+
+    const totalPrice = this.props.price * this.state.quantity;
+
     return (
-      <div style={ styles }>
+      <div className={classes}>
         <h2> {this.props.name} </h2>
         <h3> Quantity: {this.state.quantity} </h3>
         <button onClick={this.addOne}> + </button>
@@ -75,12 +72,10 @@ class FruitCard extends React.Component {
         <button onClick={this.takeOne}> - </button>
         <hr />
         <p> $ {this.props.price} </p>
-        <p>
-          total: ${this.props.price * this.state.quantity}
-        </p>
+        <p>total: ${totalPrice}</p>
       </div>
     );
   }
 }
 
-export default FruitCard
+export default FruitCard;
