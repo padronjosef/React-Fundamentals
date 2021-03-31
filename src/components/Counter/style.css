@@ -1,0 +1,13 @@
+.counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  margin-right: 20px;
+}
+
+.button {
+  height: fit-content;
+}
